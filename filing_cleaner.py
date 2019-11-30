@@ -18,11 +18,6 @@ class FilingCleaner:
 
         self.cik_df = pd.read_table('ticker.txt', header=None, names=['ticker', 'cik'])
 
-    def additionalStopwords(self):
-        return set(line.strip().lower() for line in open('stopwords/StopWords_DatesandNumbers.txt')) | \
-               set(line.strip().lower() for line in open('stopwords/StopWords_Names.txt')) | \
-               set(line.strip().lower() for line in open('stopwords/StopWords_Geographic.txt'))
-
     def removeInnerLinks(self, soup):
         [i.extract() for i in soup.find_all('a', href=True) if len(i['href']) > 0 and i['href'][0] == '#']
         return soup

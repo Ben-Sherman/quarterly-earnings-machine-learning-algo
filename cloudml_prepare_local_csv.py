@@ -31,4 +31,4 @@ df['prc_change_t2'] = pd.qcut(df.prc_change_t2, q=5, labels=range(5))
 
 print(df)
 
-df.to_csv('training_data.csv', header=False)
+df.to_csv('training_data.csv', header=False, index=False)

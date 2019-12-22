@@ -1,0 +1,8 @@
+filings
+cleaned_filings
+whole_file_diffs
+*.out
+*.log
+*.tsv
+*.pkl
+*.csv

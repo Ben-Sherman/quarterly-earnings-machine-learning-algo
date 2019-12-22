@@ -8,6 +8,7 @@ import re
 import alpaca_trade_api as tradeapi
 import yfinance as yf
 import sys
+import argparse
 
 base_url = 'https://www.sec.gov'
 
@@ -82,9 +83,15 @@ def canShort(api, symbol):
 
 def main():
 
-    alpaca_api_key_id = sys.argv[1]
-    alpaca_api_secret_key = sys.argv[2]
-    model_name = sys.argv[3]
+    parser = argparse.ArgumentParser(description="automatic trader")
+    parser.add_argument('--key', type=str, required=True, help='Alpaca API key ID')
+    parser.add_argument('--secret', type=str, required=True, help='Alpaca API secret key')
+    parser.add_argument('--model', type=str, required=True, help='ML model name')
+    args = parser.parse_args()
+
+    alpaca_api_key_id = args.key
+    alpaca_api_secret_key = args.secret
+    model_name = args.model
 
     api = tradeapi.REST(
         alpaca_api_key_id,
